@@ -5,7 +5,7 @@ import {Container, Content, Goal, InvestmentTitle, Value} from './styles';
 interface Props {
   investimentTitle: string;
   goal: string;
-  value: number;
+  value: string;
   isDisabled: boolean;
   onPress: () => void;
 }

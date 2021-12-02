@@ -3,6 +3,8 @@ import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 import {CardInvestment} from '../../components/CardInvestment';
 import {Header} from '../../components/Header';
+import {applyMask} from '../../services/utils/convertCurrency';
+import {IInvestiment} from '../../types/Investments';
 
 import {Box, Container, Text, TitleContainer} from './styles';
 
@@ -37,12 +39,12 @@ export const Home: React.FC = () => {
     }
   };
 
-  const renderItem = data => {
+  const renderItem = (data: IInvestiment) => {
     return (
       <CardInvestment
         investimentTitle={data.nome}
         goal={data.objetivo}
-        value={data.saldoTotal}
+        value={applyMask(data.saldoTotal.toString())}
         isDisabled={blocked}
         onPress={() => navigation.navigate('Rescue', {data})}
       />
